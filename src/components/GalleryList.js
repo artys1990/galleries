@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Gallery from './Gallery';
 import Button from './Button';
-
+import Grid from '@material-ui/core/Grid';
 export default class GalleryList extends Component {
     state = {
         galleries: [{
@@ -22,23 +22,37 @@ export default class GalleryList extends Component {
                 id: "4",
                 title: "MyGallery",
               pictures:["https://images.unsplash.com/photo-1564345440082-155c43c5532f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"]
+            }, 
+            {
+                id: "5",
+                title: "MyGallery",
+              pictures:["https://images.unsplash.com/photo-1564345440082-155c43c5532f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"]
+            }, 
+            {
+                id: "6",
+                title: "MyGallery",
+              pictures:["https://images.unsplash.com/photo-1564345440082-155c43c5532f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"]
             }
     
         ]
-    
       };
-
+    
+    addNewHandler= () => {
+      this.props.history.push('/newGallery');
+    } 
     render() {
         return (
-            <div>
-                <Button />
-                <div className="gridContainer">
+            <div className="galleryList">
+                <Button text="Pievienot jaunu galeriju" 
+                    click={this.addNewHandler}
+                />
+                <Grid container spacing={3}>
                     {this.state.galleries.map(gallery=>{
-                        return <div key={gallery.id}>
-                            <Gallery title={gallery.title} pic={gallery.pictures[0]}/>
-                        </div>
+                        return <Grid item xs={3} key={gallery.id}>
+                                  <Gallery title={gallery.title} pic={gallery.pictures[gallery.pictures.length-1]}/>
+                              </Grid>
                     })}
-               </div>
+               </Grid>
             </div>
         )
     }

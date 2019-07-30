@@ -5,19 +5,15 @@ import NewGallery from './components/NewGallery';
 import {Route, BrowserRouter as Router, Link } from 'react-router-dom';
 
 class App extends Component {
-
-  nextPath(path) {
-    this.props.history.push(path);
-  }
-
+//sdsaxsd
 
   render() {
     return (
       <Router>
       <div className="App">
-          <Route path="/" exact strict component={GalleryList} />
-          <Route path='/newGallery' strict exact component={NewGallery} />
-
+          
+              <Route path="/" exact strict component={GalleryList} />
+              <Route path='/newGallery' strict exact component={NewGallery} />
       </div>
       </Router>
     );

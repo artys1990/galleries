@@ -1,4 +1,7 @@
-
+body {
+  background: #4f5a65;
+  padding: 30px;
+}
 .galleryContainer {
   padding: 10px;
   min-height:150px;
@@ -13,12 +16,4 @@
   bottom:0;
   left:10;
   
-}
-.gridContainer {
-  width: 800px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: auto auto auto;
- /* background-color: #2196F3;*/
- 
 }
