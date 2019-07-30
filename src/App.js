@@ -3,11 +3,8 @@ import GalleryList from './components/GalleryList';
 import './App.css';
 import NewGallery from './components/NewGallery';
 import {Route, BrowserRouter as Router, Link } from 'react-router-dom';
-import Button from './components/Button';
 
 class App extends Component {
-
-
 
   nextPath(path) {
     this.props.history.push(path);
@@ -18,10 +15,8 @@ class App extends Component {
     return (
       <Router>
       <div className="App">
-       <Button />
-       
-             <Route path="/" exact strict component={GalleryList} />
-              <Route path='/newGallery' strict exact component={NewGallery} />
+          <Route path="/" exact strict component={GalleryList} />
+          <Route path='/newGallery' strict exact component={NewGallery} />
 
       </div>
       </Router>
