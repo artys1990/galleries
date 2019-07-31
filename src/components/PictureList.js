@@ -10,8 +10,11 @@ export default class PictureList extends Component {
         
     //   };
     
-    deleteHandler= () => {
-      this.props.history.push('/newGallery');
+    deleteHandler= (id) => {
+        console.log("id=="+ id)
+        console.log("context ir: "+this.context.addGallery)
+        this.context.deleteGallery(id);
+        this.props.history.push('/');
     } 
     render() {
         console.log(this.props.location.state)
@@ -20,7 +23,7 @@ export default class PictureList extends Component {
         return (
             <div className="galleryList">
                 <Button text="Dzēst galeriju" 
-                    click={this.deleteHandler}
+                    click={() => this.deleteHandler(this.props.location.state.id)}
                 />
                  <Grid container spacing={3}>
 

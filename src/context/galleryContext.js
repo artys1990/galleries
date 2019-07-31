@@ -41,6 +41,7 @@ export default class GalleryProvider extends Component {
             ]
         }
         this.addGallery = this.addGallery.bind(this)
+        this.deleteGallery = this.deleteGallery.bind(this)
     }
  
     addGallery= (title, urls) => {
@@ -49,12 +50,27 @@ export default class GalleryProvider extends Component {
             galleries: [...prevState.galleries, {id: new Date().getTime(), 
                 title:title,
                 pictures:urls
-        }]
-          }))
-        }
+            }]
+        }))
+    }
+
+    deleteGallery = (id) => {
+        const removeIndex = this.state.galleries.map((gallery) => { 
+            return gallery.id}).indexOf(id);
+         
+        const updated = [...this.state.galleries]
+            updated.splice(removeIndex,1)
+        this.setState({
+            galleries: updated
+        })
+    }
+    
     render() {
         return (
-            <GalleryContext.Provider value={{...this.state, addGallery: this.addGallery}}>
+            <GalleryContext.Provider value={{...this.state, 
+                                    addGallery: this.addGallery,
+                                    deleteGallery:this.deleteGallery
+                            }}>
                 {this.props.children}
             </GalleryContext.Provider>
         );

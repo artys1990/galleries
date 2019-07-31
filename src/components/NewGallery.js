@@ -20,13 +20,11 @@ export default class NewGallery extends Component {
                 urls: this.state.urls
             })
         }
-        console.log(this.state.title)
     }
 
     add = (event) => {
         event.preventDefault();
         const newUrls = this.state.urls.filter(Boolean) //izņem tukšās adreses
-        console.log(newUrls)
         this.context.addGallery(this.state.title, newUrls);
         this.props.history.push('/');
     }
