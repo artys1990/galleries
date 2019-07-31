@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import DeleteIcon from '@material-ui/icons/Delete';
+
 
 export default class Picture extends Component {
     backStyle = {
@@ -8,9 +10,20 @@ export default class Picture extends Component {
         backgroundSize: "cover"
     }
 
+   
     render() {
         return (
                 <div className="galleryContainer" style={this.backStyle}>
+                    <DeleteIcon onClick={this.props.deleteClick}
+                        style={{color: "white",
+                                        width:"20px",
+                                        backgroundColor:"red", 
+                                        height:"20px", 
+                                        position:"absolute", 
+                                        right:"0px", 
+                                        top:"0px",
+                                        cursor:"pointer"}}/>
+                    
                     <img src={this.props.url} alt="" />
                 </div>
         )

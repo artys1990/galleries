@@ -64,12 +64,27 @@ export default class GalleryProvider extends Component {
             galleries: updated
         })
     }
+    deletePicture = (picIndex, galleryId) => {
+        let newGallery = [...this.state.galleries];
+        newGallery = newGallery.map((gal) => {
+            if(gal.id===galleryId){
+                gal.pictures.splice(picIndex, 1);
+            }
+            return gal;
+            }
+        )
+        this.setState({
+            galleries: newGallery
+        })
+     }
     
+
     render() {
         return (
             <GalleryContext.Provider value={{...this.state, 
                                     addGallery: this.addGallery,
-                                    deleteGallery:this.deleteGallery
+                                    deleteGallery:this.deleteGallery,
+                                    deletePicture:this.deletePicture
                             }}>
                 {this.props.children}
             </GalleryContext.Provider>
