@@ -9,11 +9,14 @@ import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
 import blue from '@material-ui/core/colors/blue';
 import red from '@material-ui/core/colors/red'
+import "react-alice-carousel/lib/alice-carousel.css"
+import AliceCarousel from 'react-alice-carousel';
 
 export default class PictureList extends Component {
     static contextType = GalleryContext;
      state = {
-        openDeleteDialog: false
+        openDeleteDialog: false,
+        showCarousel: false
     };
     
     openDialog = () => {
@@ -22,12 +25,16 @@ export default class PictureList extends Component {
     closeDialog = () => {
         this.setState({openDeleteDialog: false});
     }
-
+    openCarousel = () => {
+        this.setState({showCarousel: true});
+    }
+    closeCarousel = () => {
+        this.setState({showCarousel: false});
+    }
 
     deletePicture = (index, galleryId) => {
         this.context.deletePicture(index, galleryId);
     }
-
 
     deleteHandler= (id) => {
         console.log("id=="+ id)
@@ -35,7 +42,9 @@ export default class PictureList extends Component {
         this.context.deleteGallery(id);
         this.props.history.push('/');
     } 
+
     render() {
+        const handleOnDragStart = e => e.preventDefault() // carousel
         const {openDeleteDialog} = this.state;
        // const {galleryID} = this.props.location.state.id;
         const gallery = this.context.galleries.find( gallery => gallery.id ===  this.props.location.state.id);
@@ -49,10 +58,22 @@ export default class PictureList extends Component {
 
                      {gallery.pictures.map((pic, index)=>{
                         return <Grid item xs={3} key={index}>
-                                  <Picture url={pic} deleteClick={()=>this.deletePicture(index, gallery.id )}/>
+                                  <Picture zoom={this.openCarousel} url={pic} deleteClick={()=>this.deletePicture(index, gallery.id )}/>
                               </Grid>
                     })} 
                </Grid> 
+               
+
+               <Dialog open={this.state.showCarousel} onClose={this.closeCarousel}>
+               <AliceCarousel mouseDragEnabled items={gallery.pictures.url} >
+      {/* <img src="" onDragStart={handleOnDragStart} className="yours-custom-class" />
+      <img src="/img2" onDragStart={handleOnDragStart} className="yours-custom-class" />
+      <img src="/img3" onDragStart={handleOnDragStart} className="yours-custom-class" />
+      <img src="/img4" onDragStart={handleOnDragStart} className="yours-custom-class" />
+      <img src="/img5" onDragStart={handleOnDragStart} className="yours-custom-class" /> */}
+    </AliceCarousel>
+    </Dialog>
+
                
                <Dialog open={openDeleteDialog} onClose={this.closeDialog}>
                    <DialogTitle>Vai tiešām dzēst galeriju?</DialogTitle>
@@ -75,6 +96,7 @@ export default class PictureList extends Component {
                        </ListItem>
                    </List>
                </Dialog>
+               
             </div>
         )
     }

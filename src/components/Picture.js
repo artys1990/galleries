@@ -24,7 +24,7 @@ export default class Picture extends Component {
                                         top:"0px",
                                         cursor:"pointer"}}/>
                     
-                    <img src={this.props.url} alt="" />
+                    <img src={this.props.url} alt="" onClick={this.props.zoom}/>
                 </div>
         )
     }
