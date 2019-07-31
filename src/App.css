@@ -1,9 +1,11 @@
-
+body {
+  background: #bbc4ef;
+}
 .galleryContainer {
   padding: 10px;
   min-height:150px;
   border: 1px solid black;
-  margin-top:20px;
+  margin-top:10px;
   margin-right:10px;
   position: relative;
 }
@@ -14,11 +16,8 @@
   left:10;
   
 }
-.gridContainer {
-  width: 800px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: auto auto auto;
- /* background-color: #2196F3;*/
- 
+
+
+.galleryList {
+  padding: 20px;
 }

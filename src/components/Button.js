@@ -1,9 +1,9 @@
 import React from 'react'
-
-export default function Button() {
+import Button1 from '@material-ui/core/Button';
+export default function Button(props) {
     return (
-        <button>
-            Pievienot jaunu galeriju
-        </button>
+        <Button1 variant="contained" color="primary">
+            {props.text}
+        </Button1>
     )
 }
