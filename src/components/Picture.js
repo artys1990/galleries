@@ -1,20 +1,17 @@
 import React, { Component } from 'react'
 
-export default class Gallery extends Component {
+export default class Picture extends Component {
     backStyle = {
         backgroundImage: "url(" + this.props.pic + ")",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover"
     }
-    titleStyle = {
-        color:"white",
 
-    }
     render() {
         return (
-                <div onClick={this.props.click} className="galleryContainer" style={this.backStyle}>
-                    <h3 style={this.titleStyle}>{this.props.title}</h3>
+                <div className="galleryContainer" style={this.backStyle}>
+                    <img src={this.props.url} alt="" />
                 </div>
         )
     }

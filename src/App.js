@@ -2,22 +2,21 @@ import React, { Component } from 'react';
 import GalleryList from './components/GalleryList';
 import './App.css';
 import NewGallery from './components/NewGallery';
-import {Route, BrowserRouter as Router, Link } from 'react-router-dom';
-
+import {Route, BrowserRouter as Router } from 'react-router-dom';
+import GalleryProvider from './context/galleryContext';
+import PictureList from './components/PictureList';
 class App extends Component {
-
-  nextPath(path) {
-    this.props.history.push(path);
-  }
-
+//sdsaxsd
 
   render() {
     return (
       <Router>
       <div className="App">
-          <Route path="/" exact strict component={GalleryList} />
-          <Route path='/newGallery' strict exact component={NewGallery} />
-
+          <GalleryProvider>
+              <Route path="/" exact strict component={GalleryList} />
+              <Route path='/newGallery' strict exact component={NewGallery} />
+              <Route path='/PictureList' strict exact component={PictureList} />
+          </GalleryProvider>
       </div>
       </Router>
     );
