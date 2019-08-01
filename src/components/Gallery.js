@@ -14,6 +14,7 @@ export default class Gallery extends Component {
     render() {
         return (
                 <div onClick={this.props.click} className="galleryContainer" style={this.backStyle}>
+                    
                     <h3 style={this.titleStyle}>{this.props.title}</h3>
                 </div>
         )

@@ -8,8 +8,8 @@ import {DialogTitle} from '@material-ui/core';
 import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
 import blue from '@material-ui/core/colors/blue';
-import red from '@material-ui/core/colors/red'
-import "react-alice-carousel/lib/alice-carousel.css"
+import red from '@material-ui/core/colors/red';
+import "react-alice-carousel/lib/alice-carousel.css";
 import AliceCarousel from 'react-alice-carousel';
 
 export default class PictureList extends Component {
@@ -43,11 +43,27 @@ export default class PictureList extends Component {
         this.props.history.push('/');
     } 
 
+    generateImgs = (input)=> {
+        const result = [];
+         input.map((img)=> {
+            return (
+                result.push(<img src={img} />)
+            )
+        })
+        return result;
+    }  
+    
     render() {
         const handleOnDragStart = e => e.preventDefault() // carousel
         const {openDeleteDialog} = this.state;
+        
+
        // const {galleryID} = this.props.location.state.id;
-        const gallery = this.context.galleries.find( gallery => gallery.id ===  this.props.location.state.id);
+        const gallery = this.context.galleries.find( gal => gal.id ===  this.props.location.state.id);
+       
+      
+        const items = this.generateImgs(gallery.pictures)
+        console.log("items: "+gallery.pictures)
         return (
             <div className="galleryList">
                 <Button text="Dzēst galeriju" 
@@ -63,9 +79,10 @@ export default class PictureList extends Component {
                     })} 
                </Grid> 
                
-
+             
                <Dialog open={this.state.showCarousel} onClose={this.closeCarousel}>
-               <AliceCarousel mouseDragEnabled items={gallery.pictures.url} >
+               <AliceCarousel mouseDragEnabled >
+               <div><h2>1</h2></div>
       {/* <img src="" onDragStart={handleOnDragStart} className="yours-custom-class" />
       <img src="/img2" onDragStart={handleOnDragStart} className="yours-custom-class" />
       <img src="/img3" onDragStart={handleOnDragStart} className="yours-custom-class" />

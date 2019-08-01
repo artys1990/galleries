@@ -65,14 +65,21 @@ export default class GalleryProvider extends Component {
         })
     }
     deletePicture = (picIndex, galleryId) => {
+        const galleryIndex = this.state.galleries.map((gallery) => { 
+            return gallery.id}).indexOf(galleryId);
         let newGallery = [...this.state.galleries];
-        newGallery = newGallery.map((gal) => {
-            if(gal.id===galleryId){
-                gal.pictures.splice(picIndex, 1);
-            }
-            return gal;
-            }
-        )
+        newGallery[galleryIndex].pictures.splice(picIndex,1)
+        // console.log("picIndex"+picIndex)
+        // let newGallery = [...this.state.galleries];
+        //  newGallery.map((gal) => {
+        //     if(gal.id===galleryId){
+        //         return
+        //         gal.pictures.splice(picIndex, 1);
+        //     }
+        //     console.log("gal: "+ gal.id)
+        //     return gal;
+        //     }
+        // )
         this.setState({
             galleries: newGallery
         })

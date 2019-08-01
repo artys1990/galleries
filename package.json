@@ -5,7 +5,9 @@
   "dependencies": {
     "@material-ui/core": "^4.3.0",
     "@material-ui/icons": "^4.2.1",
+    "install": "^0.13.0",
     "material-ui": "^0.20.2",
+    "npm": "^6.10.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",

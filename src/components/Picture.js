@@ -4,17 +4,19 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 export default class Picture extends Component {
     backStyle = {
-        backgroundImage: "url(" + this.props.pic + ")",
+        backgroundImage: "url(" + this.props.url + ")",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        backgroundSize: "cover"
+        backgroundSize: "cover",
+        cursor:"pointer"
     }
-
-   
     render() {
         return (
-                <div className="galleryContainer" style={this.backStyle}>
-                    <DeleteIcon onClick={this.props.deleteClick}
+                <div className="galleryContainer" style={this.backStyle} onClick={this.props.zoom}>
+                    <DeleteIcon 
+                    onClick={(e)=> {
+                            e.stopPropagation();
+                            this.props.deleteClick()}}
                         style={{color: "white",
                                         width:"20px",
                                         backgroundColor:"red", 
@@ -23,8 +25,10 @@ export default class Picture extends Component {
                                         right:"0px", 
                                         top:"0px",
                                         cursor:"pointer"}}/>
-                    
-                    <img src={this.props.url} alt="" onClick={this.props.zoom}/>
+
+
+                
+                    {/* <img src={this.props.url} alt="" onClick={this.props.zoom}/> */}
                 </div>
         )
     }

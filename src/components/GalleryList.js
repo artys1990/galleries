@@ -26,7 +26,7 @@ export default class GalleryList extends Component {
                  <Grid container spacing={3}>
                     {this.context.galleries.map(gallery=>{
                         return <Grid item xs={3} key={gallery.id}>
-                                  <Gallery click={()=>this.openHandler(gallery.id)} title={gallery.title} pic={gallery.pictures[gallery.pictures.length-1]}/>
+                                  <Gallery click={()=>this.openHandler(gallery.id)} title={gallery.title} pic={gallery.pictures[0]}/>
                               </Grid>
                     })}
                </Grid> */
