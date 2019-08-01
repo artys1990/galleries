@@ -47,7 +47,7 @@ export default class PictureList extends Component {
         const result = [];
          input.map((img)=> {
             return (
-                result.push(<img src={img} />)
+                result.push(<diV><img src={img} width="600" height="400" /></diV>)
             )
         })
         return result;
@@ -81,8 +81,8 @@ export default class PictureList extends Component {
                
              
                <Dialog open={this.state.showCarousel} onClose={this.closeCarousel}>
-               <AliceCarousel mouseDragEnabled >
-               <div><h2>1</h2></div>
+               <AliceCarousel mouseDragEnabled startIndex={0} autoHeight={true}>
+               {items}
       {/* <img src="" onDragStart={handleOnDragStart} className="yours-custom-class" />
       <img src="/img2" onDragStart={handleOnDragStart} className="yours-custom-class" />
       <img src="/img3" onDragStart={handleOnDragStart} className="yours-custom-class" />
